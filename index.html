@@ -1063,22 +1063,22 @@
             <div class="contact-form">
                 <form id="contactForm" action="https://formsubmit.co/buzeumarketing@gmail.com" method="POST">
                     <!-- Setări FormSubmit -->
-                    <input type="hidden" name="_subject" value="Mesaj nou de pe site AERON TERMOSISTEM">
+                    <input type="hidden" name="_subject" value="🏗️ Mesaj NOU - AERON TERMOSISTEM">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://aerontermosistem.vercel.app/">
-                    
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Nume complet *" required>
+                    <input type="text" name="_honey" style="display:none">
+    
+                     <div class="form-group">
+                     <input type="text" name="Nume_Complet" placeholder="Nume complet *" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Email *" required>
+                    <input type="email" name="Email" placeholder="Email *" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Telefon *" required>
+                    <input type="tel" name="Telefon" placeholder="Telefon *" required>
                     </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Mesajul dumneavoastră *" required></textarea>
+                     <div class="form-group">
+                     <textarea name="Mesaj" placeholder="Mesajul dumneavoastră *" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">TRIMITE MESAJ</button>
                 </form>
@@ -1233,24 +1233,7 @@
             }
         });
 
-        // Contact Form Submission with Thank You Modal
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault(); // Oprește trimiterea normală
-                
-                // Arată modalul direct (pentru testare locală)
-                showThankYouModal();
-                
-                // Resetează formularul
-                this.reset();
-                
-                // Notă: Când pui site-ul live, comentează linia de sus (e.preventDefault())
-                // și formularul va trimite email-uri reale prin FormSubmit
-            });
-        }
-
-        // Check if redirected back from FormSubmit (pentru când site-ul e live)
+      // Contact Form - Lasă FormSubmit să trimită email-ul
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('submitted') || document.referrer.includes('formsubmit.co')) {
             showThankYouModal();
@@ -1313,8 +1296,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
