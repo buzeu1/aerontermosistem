@@ -63,6 +63,7 @@ export default function AdminPanel() {
       return
     }
 
+    const data = await res.json()
     if (res.ok) {
       setMesaj('Imaginea a fost adaugata!')
       setFisier(null)
@@ -72,7 +73,7 @@ export default function AdminPanel() {
       if (inputRef.current) inputRef.current.value = ''
       fetchImagini()
     } else {
-      setMesaj('Eroare la upload!')
+      setMesaj('Eroare: ' + (data.eroare || 'necunoscuta'))
     }
     setLoading(false)
   }

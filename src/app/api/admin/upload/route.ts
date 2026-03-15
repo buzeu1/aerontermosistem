@@ -57,7 +57,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ succes: true, imagine: imagineSalvata }, { status: 201 })
   } catch (error) {
-    console.error('Eroare upload:', error)
-    return NextResponse.json({ eroare: 'Eroare la upload' }, { status: 500 })
+    const mesaj = error instanceof Error ? error.message : String(error)
+    console.error('Eroare upload:', mesaj)
+    return NextResponse.json({ eroare: mesaj }, { status: 500 })
   }
 }
