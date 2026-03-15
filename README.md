@@ -72,12 +72,21 @@ aerontermosistem/
 
 ---
 
+## Admin Panel
+
+Navigate to `/admin` — authenticate with the password from `.env.local`.
+
+- Upload an image → uploaded to **Cloudinary** → URL saved in **MongoDB**
+- Delete images from the gallery
+- Gallery on the main site updates automatically
 
 ---
 
-# AERON TERMOSISTEM — Documentație în Română
+---
 
-> Site web pentru servicii de construcții și renovări — Roman, Județul Neamț.
+# AERON TERMOSISTEM — Romana
+
+> Site web pentru servicii de constructii si renovari — Roman, Judetul Neamt.
 
 **Live:** [aerontermosistem.vercel.app](https://aerontermosistem.vercel.app)
 
@@ -87,7 +96,7 @@ aerontermosistem/
 
 | Strat | Tehnologie |
 |-------|-----------|
-| Framework | Next.js 15 (App Router) |
+| Framework | [Next.js 15](https://nextjs.org) (App Router) |
 | Limbaj | TypeScript |
 | Stilizare | CSS custom + Tailwind CSS |
 | Baza de date | MongoDB Atlas + Mongoose |
@@ -107,10 +116,52 @@ aerontermosistem/
 
 ---
 
-## Admin Panel
+## Structura proiectului
 
-Navigate to `/admin` — authenticate with the password from `.env.local`.
+```
+aerontermosistem/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx                  # Pagina principala
+│   │   ├── layout.tsx                # Layout de baza + metadata SEO
+│   │   ├── globals.css               # Stiluri globale
+│   │   ├── admin/
+│   │   │   ├── page.tsx              # Dashboard admin (upload / stergere imagini)
+│   │   │   └── login/page.tsx        # Pagina de login admin
+│   │   └── api/
+│   │       ├── contact/route.ts      # POST — salveaza mesaj de contact in MongoDB
+│   │       ├── imagini/route.ts      # GET — returneaza imaginile din MongoDB
+│   │       ├── imagini/[id]/route.ts # DELETE — sterge o imagine
+│   │       ├── admin/login/route.ts  # POST/DELETE — cookie autentificare admin
+│   │       └── admin/upload/route.ts # POST — upload pe Cloudinary + salveaza URL in MongoDB
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Servicii.tsx
+│   │   ├── Despre.tsx
+│   │   ├── Galerie.tsx               # Grila galerie + lightbox
+│   │   ├── Contact.tsx               # Formular de contact
+│   │   └── Footer.tsx
+│   ├── models/
+│   │   ├── Imagine.ts                # Schema Mongoose — imagine galerie
+│   │   └── Mesaj.ts                  # Schema Mongoose — mesaj contact
+│   ├── lib/
+│   │   └── mongodb.ts                # Conexiune MongoDB (cu cache)
+│   └── middleware.ts                 # Protejeaza rutele /admin
+├── public/
+│   └── images/                       # Imagini statice locale
+├── .env.local.example                # Template variabile de mediu
+├── next.config.mjs
+├── tailwind.config.ts
+└── tsconfig.json
+```
 
-- Upload an image → uploaded to **Cloudinary** → URL saved in **MongoDB**
-- Delete images from the gallery
-- Gallery on the main site updates automatically
+---
+
+## Panou Admin
+
+Mergi la `/admin` — autentificare cu parola din `.env.local`.
+
+- Incarci o poza → se urca pe **Cloudinary** → URL-ul se salveaza in **MongoDB**
+- Stergi imagini din galerie
+- Galeria de pe site se actualizeaza automat
