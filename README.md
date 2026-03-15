@@ -107,23 +107,10 @@ aerontermosistem/
 
 ---
 
-## Pornire locala
+## Admin Panel
 
-```bash
-git clone https://github.com/buzeu1/aerontermosistem.git
-cd aerontermosistem
-npm install
-cp .env.local.example .env.local
-# Completeaza .env.local cu datele tale
-npm run dev
-```
+Navigate to `/admin` — authenticate with the password from `.env.local`.
 
----
-
-## Panou Admin
-
-Mergi la `/admin` → autentificare cu parola din `.env.local`.
-
-- Incarci o poza → se urca pe **Cloudinary** → URL-ul se salveaza in **MongoDB**
-- Stergi imagini din galerie
-- Galeria de pe site se actualizeaza automat
+- Upload an image → uploaded to **Cloudinary** → URL saved in **MongoDB**
+- Delete images from the gallery
+- Gallery on the main site updates automatically
